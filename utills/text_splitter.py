@@ -25,13 +25,13 @@ def split_text(text):
 
 def create_knowledge_base(chunks):
     """
-        Creates a knowledge base from the given text chunks.
+    Creates a knowledge base from the given text chunks.
 
-        Args:
-            chunks (list): A list of text chunks.
+    Args:
+        chunks (list): A list of text chunks.
 
-        Returns:
-            knowledge_base: The created knowledge base.
+    Returns:
+        knowledge_base: The created knowledge base.
     """
     embeddings = OpenAIEmbeddings()
     knowledge_base = FAISS.from_texts(chunks, embeddings)
