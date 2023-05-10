@@ -6,11 +6,9 @@ from langchain.callbacks import get_openai_callback
 def retrieve_related_documents(knowledge_base, user_question):
     """
     Retrieves related documents from a knowledge base based on a user question.
-
     Args:
         knowledge_base: The knowledge base to search for related documents.
         user_question: The user's question.
-
     Returns:
         A list of related documents.
     """
@@ -23,12 +21,10 @@ def retrieve_related_documents(knowledge_base, user_question):
 def generate_response(llm, docs, user_question):
     """
     Generates a response using a language model and a list of documents.
-
     Args:
         llm: The language model to generate the response.
         docs: The list of documents to provide context.
         user_question: The user's question.
-
     Returns:
         The generated response and the callback object.
     """
@@ -41,11 +37,9 @@ def generate_response(llm, docs, user_question):
 def generate_answer(knowledge_base, user_question):
     """
     Displays the user input and generates a response.
-
     Args:
         knowledge_base: The knowledge base to search for related documents.
         user_question: The user's question.
-
     Returns:
         The generated response or an error message if no related documents are found.
     """
