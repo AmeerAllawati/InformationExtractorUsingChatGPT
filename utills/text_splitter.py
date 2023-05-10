@@ -1,13 +1,38 @@
-from textsplitter import CharacterTextSplitter
+from langchain.text_splitter import CharacterTextSplitter
+from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain.vectorstores import FAISS
 
 
-# define a function named split_text that takes a text string as input
 def split_text(text):
+    """
+    Splits the given text into chunks.
+
+    Args:
+        text (str): The input text to be split.
+
+    Returns:
+        list: A list of text chunks.
+    """
     text_splitter = CharacterTextSplitter(
         separator="\n",
         chunk_size=1000,
         chunk_overlap=200,
         length_function=len
     )
-    # use the split_text method of the text_splitter object to split the input text into chunks and return the result
-    return text_splitter.split_text(text)
+    chunks = text_splitter.split_text(text)
+    return chunks
+
+
+def create_knowledge_base(chunks):
+    """
+        Creates a knowledge base from the given text chunks.
+
+        Args:
+            chunks (list): A list of text chunks.
+
+        Returns:
+            knowledge_base: The created knowledge base.
+    """
+    embeddings = OpenAIEmbeddings()
+    knowledge_base = FAISS.from_texts(chunks, embeddings)
+    return knowledge_base
